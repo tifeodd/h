@@ -1,0 +1,65 @@
+body {
+  background-color: #ffe6f2; /* Light pink */
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff; /* White */
+}
+
+h2 {
+  color: #ff6699; /* Pink */
+  font-family: 'Pacifico', cursive;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+.logout-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #ff6699; /* Pink */
+  color: #ffffff; /* White */
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+.shortened-url-table {
+  margin-top: 40px;
+}
+
+.shortened-url-table th, .shortened-url-table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.shortened-url-table thead th {
+  background-color: #ff6699; /* Pink */
+  color: #ffffff; /* White */
+}
+
+.shortened-url-table tbody tr:hover {
+  background-color: #ffe0f7; /* Lighter pink */
+}
+
+.shortened-url-table a {
+  color: #007bff; /* Blue */
+}
+
+.shortened-url-table a:hover {
+  text-decoration: underline;
+}

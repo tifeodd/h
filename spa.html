@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Shortener SPA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" 
+    integrity="sha512-QsHKxYAZuphoONUeRhbpPlNrMqvYfn8erfur+PMH0BVOPLWuhdFAM3dhGWfTK&#x27;AQhCmwzGgQj5OTmw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<div id="app" class="container">
+  <button v-if="isLoggedIn" class="logout-btn" @click="logout">
+    Logout
+  </button>
+  <h2 v-if="isLoggedIn">Welcome!</h2>
+  <div v-if="isLoggedIn">
+    <form @submit.prevent="addUrl">
+      <div class="form-group">
+        <label for="urlInput">Enter URL to shorten:</label>
+        <input type="url" id="urlInput" class="form-control" v-model="originalUrl">
+      </div>
+      <button type="submit" class="btn btn-primary" v-on:click="addUrl">Shorten URL</button>
+    </form>
+    <div class="shortened-url-table" v-if="urls && urls.length > 0">
+      <h3>Previously Added URLs:</h3>
+      <table class="table" v-if="urls && urls.length > 0">
+        <thead>
+          <tr>
+            <th>Original URL</th>
+            <th>Shortened URL</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(url, index) in urls" :key="index">
+            <td>{{ url.LongURL }}</td>
+            <td><a :href="url.ShortURL" target="_blank">{{ url.ShortURL }}</a></td>
+            <td>{{ url.CreationDate }}</td>
+            <td>
+  <button class="btn btn-sm btn-warning" v-on:click="editUrl(index)">
+    <i class="fas fa-edit"></i>
+  </button>
+  <button class="btn btn-sm btn-danger" v-on:click="deleteUrl(index)">
+    <i class="fas fa-trash-alt"></i>
+  </button>
+</td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div v-else>
+      <p>No URLs added yet.</p>
+    </div>
+  </div>
+  <div v-else>
+    <h2>URL Shortener</h2>
+    <form @submit.prevent="login">
+      <div class="form-group">
+        <label for="emailInput">Email:</label>
+        <input type="email" id="emailInput" class="form-control" v-model="email" required>
+      </div>
+      <div class="form-group">
+        <label for="passwordInput">Password:</label>
+        <input type="password" id="passwordInput" class="form-control" v-model="password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
+<script src="/static/app.js"></script>
+<link rel="stylesheet" href="/static/app.css"/>
+</body>
+</html>
